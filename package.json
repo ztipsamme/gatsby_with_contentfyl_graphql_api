@@ -13,9 +13,16 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install",
+    "format": "npx prettier --write .",
+    "check-format": "npx prettier --check .",
+    "check-types": "npx tsc --pretty --noEmit",
+    "check-lint": "npx eslint . --ext ts --ext tsx --ext js",
+    "test": "npm run check-format && npm run check-lint && npm run check-types && npm run build"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
     "autoprefixer": "^10.4.20",
     "dotenv": "^16.4.5",
     "gatsby": "^5.14.0",
@@ -25,15 +32,34 @@
     "gatsby-source-contentful": "^8.14.0",
     "gatsby-source-filesystem": "^5.14.0",
     "gatsby-transformer-sharp": "^5.14.0",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.4.49",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.4.15"
+    "tailwindcss": "^3.4.15",
+    "uninstall": "^0.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.19",
-    "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.19",
-    "typescript": "^5.3.3"
+    "@types/node": "^20.17.9",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-gatsby": "^1.0.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-react": "^7.37.2",
+    "gatsby-plugin-prettier-eslint": "^1.0.6",
+    "husky": "^8.0.0",
+    "prettier": "^3.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^4.9.5"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,jsx,tsx,html,css}": "prettier --write",
+    "src/**/*.{js,ts,jsx,tsx}": "eslint"
   }
 }

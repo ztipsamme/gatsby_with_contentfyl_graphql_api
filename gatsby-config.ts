@@ -1,8 +1,9 @@
-import type { GatsbyConfig } from 'gatsby'
+import { GatsbyConfig } from 'gatsby';
+import dotenv from 'dotenv';
 
-require('dotenv').config({
+dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -34,6 +35,6 @@ const config: GatsbyConfig = {
       __key: 'images',
     },
   ],
-}
+};
 
-export default config
+export default config;
