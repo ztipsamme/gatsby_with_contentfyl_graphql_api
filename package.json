@@ -13,7 +13,13 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install",
+    "format": "npx prettier --write .",
+    "check-format": "npx prettier --check .",
+    "check-types": "npx tsc --pretty --noEmit",
+    "check-lint": "npx eslint . --ext ts --ext tsx --ext js",
+    "test": "npm run check-format && npm run check-lint && npm run check-types && npm run build"
   },
   "dependencies": {
     "ajv": "^8.17.1",
@@ -46,10 +52,14 @@
     "eslint-plugin-promise": "^6.6.0",
     "eslint-plugin-react": "^7.37.2",
     "gatsby-plugin-prettier-eslint": "^1.0.6",
-    "husky": "^9.1.7",
+    "husky": "^8.0.0",
     "prettier": "^3.4.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typescript": "^4.9.5"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,jsx,tsx,html,css}": "prettier --write",
+    "src/**/*.{js,ts,jsx,tsx}": "eslint"
   }
 }

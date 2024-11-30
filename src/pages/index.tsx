@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { graphql, type HeadFC, type PageProps } from 'gatsby';
+import { graphql, type HeadFC } from 'gatsby';
+
+interface PageProps {
+  data: {
+    contentfulPage: {
+      title: string;
+    };
+  };
+}
 
 const IndexPage: React.FC<PageProps> = ({ data }) => {
   console.log(data);
